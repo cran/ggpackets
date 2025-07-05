@@ -1,6 +1,6 @@
 #' @importFrom ggplot2 ggplot_add
 #' @export
-ggplot_add.ggpacket <- function(object, plot, object_name) {
+ggplot_add.ggpacket <- function(object, plot, ...) {
   gg_plus_ggpacket(plot, object)
 }
 
@@ -16,7 +16,9 @@ ggplot_add.ggpacket <- function(object, plot, object_name) {
 #'
 #' @export
 `%+%` <- function(e1, e2) {
-  if (inherits(e1, "ggpacket"))
+  if (inherits(e1, "ggpacket")) {
     return(ggpacket_plus_ANY(e1, e2))
+  }
+
   ggplot2::`%+%`(e1, e2)
 }
